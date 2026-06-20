@@ -53,7 +53,7 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <title>forms of love</title>
 
   <style>
@@ -88,10 +88,34 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
       padding: 42px 40px 150px;
     }
 
-    header {
-      max-width: 520px;
-      margin-bottom: 82px;
-    }
+   header {
+  margin-bottom: 82px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.header-main {
+  max-width: 520px;
+}
+
+.contact-link {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+}
 
     h1 {
       margin: 0 0 18px;
@@ -333,9 +357,41 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
     }
 
     @media (max-width: 850px) {
-      .page {
-        padding: 30px 18px 180px;
-      }
+  .page {
+    padding: 30px 18px 180px;
+  }
+
+  header {
+    margin-bottom: 64px;
+  }
+
+  .header-top {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .contact-link {
+    font-size: 13px;
+  }
+
+  .episode-row {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .episode-details {
+    padding-left: 40px;
+  }
+
+  .player {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px 18px 18px;
+  }
+
+  .player-title {
+    white-space: normal;
+  }
+}
 
       header {
         margin-bottom: 64px;
@@ -364,15 +420,23 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
 
 <body>
   <main class="page">
-    <header>
+   <header>
+  <div class="header-top">
+    <div class="header-main">
       <h1>
         <a class="home-link" href="/">forms of love</a>
       </h1>
 
       <div class="intro">
-        radio transmissions and musical correspondence. updated weekly.
+        sharing the records, sounds, and discoveries that continue to reshape my listening. airing on cjam 99.1 fm since 2022.
       </div>
-    </header>
+    </div>
+
+    <a class="contact-link" href="mailto:hello@formsoflove.com">
+      hello@formsoflove.com
+    </a>
+  </div>
+</header>
 
     <section class="archive">
       {

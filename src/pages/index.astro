@@ -85,37 +85,24 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
 
     .page {
       width: 100%;
-      padding: 42px 40px 150px;
+      padding: 42px 40px 120px;
     }
 
-   header {
-  margin-bottom: 82px;
-}
+    header {
+      margin-bottom: 82px;
+    }
 
-.header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  width: 100%;
-}
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+    }
 
-.header-main {
-  max-width: 520px;
-}
-
-.contact-link {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 14px;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-  transition: color 0.12s ease;
-}
-
-.contact-link:hover {
-  color: var(--accent);
-}
+    .header-main {
+      max-width: 520px;
+    }
 
     h1 {
       margin: 0 0 18px;
@@ -143,6 +130,19 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
       font-size: 15px;
       line-height: 1.5;
       letter-spacing: -0.02em;
+    }
+
+    .contact-link {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      transition: color 0.12s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
     }
 
     .archive {
@@ -261,29 +261,23 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
       margin-bottom: 6px;
     }
 
-    .track-time {
-      width: 72px;
-      flex-shrink: 0;
-      color: var(--muted);
-    }
-
     .player {
       position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
       z-index: 50;
-      display: grid;
-      grid-template-columns: 320px 32px 120px minmax(0, 1fr);
-      gap: 14px;
+      display: flex;
       align-items: center;
-      padding: 14px 40px 18px;
+      gap: 18px;
+      padding: 10px 40px;
       background: var(--panel);
       border-top: 1px solid var(--line);
     }
 
     .player-meta {
-      min-width: 0;
+      min-width: 260px;
+      flex-shrink: 0;
     }
 
     .player-label {
@@ -304,6 +298,7 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
     }
 
     .player-button {
+      flex-shrink: 0;
       border: 0;
       background: transparent;
       color: var(--text);
@@ -321,6 +316,7 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
     }
 
     .player-time {
+      flex-shrink: 0;
       color: var(--muted);
       font-family: var(--mono);
       font-size: 14px;
@@ -328,9 +324,10 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
     }
 
     .player-progress {
+      flex: 1;
       width: 100%;
       height: 2px;
-      margin-top: 1px;
+      margin: 0;
       appearance: none;
       background: var(--line);
       cursor: pointer;
@@ -357,44 +354,21 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
     }
 
     @media (max-width: 850px) {
-  .page {
-    padding: 30px 18px 180px;
-  }
-
-  header {
-    margin-bottom: 64px;
-  }
-
-  .header-top {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .contact-link {
-    font-size: 13px;
-  }
-
-  .episode-row {
-    grid-template-columns: 40px 1fr;
-  }
-
-  .episode-details {
-    padding-left: 40px;
-  }
-
-  .player {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    padding: 14px 18px 18px;
-  }
-
-  .player-title {
-    white-space: normal;
-  }
-}
+      .page {
+        padding: 30px 18px 165px;
+      }
 
       header {
         margin-bottom: 64px;
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .contact-link {
+        font-size: 13px;
       }
 
       .episode-row {
@@ -406,9 +380,31 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
       }
 
       .player {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 14px 18px 18px;
+        display: grid;
+        grid-template-columns: 32px auto 1fr;
+        gap: 8px 14px;
+        align-items: center;
+        padding: 10px 18px 12px;
+      }
+
+      .player-meta {
+        grid-column: 1 / -1;
+        min-width: 0;
+      }
+
+      .player-button {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .player-time {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .player-progress {
+        grid-column: 3;
+        grid-row: 2;
       }
 
       .player-title {
@@ -420,23 +416,23 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
 
 <body>
   <main class="page">
-   <header>
-  <div class="header-top">
-    <div class="header-main">
-      <h1>
-        <a class="home-link" href="/">forms of love</a>
-      </h1>
+    <header>
+      <div class="header-top">
+        <div class="header-main">
+          <h1>
+            <a class="home-link" href="/">forms of love</a>
+          </h1>
 
-      <div class="intro">
-        sharing the records, sounds, and discoveries that continue to reshape my listening. airing on cjam 99.1 fm since 2022.
+          <div class="intro">
+            sharing the records, sounds, and discoveries that continue to reshape my listening. airing on cjam 99.1 fm since 2022.
+          </div>
+        </div>
+
+        <a class="contact-link" href="mailto:hello@formsoflove.com">
+          hello@formsoflove.com
+        </a>
       </div>
-    </div>
-
-    <a class="contact-link" href="mailto:hello@formsoflove.com">
-      hello@formsoflove.com
-    </a>
-  </div>
-</header>
+    </header>
 
     <section class="archive">
       {
@@ -475,9 +471,9 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
                       <div class="section-label">tracklist</div>
 
                       {item.tracklist.map((track) => (
-                       <div class="track">
-  {track.artist} — {track.track}
-</div>
+                        <div class="track">
+                          {track.artist} — {track.track}
+                        </div>
                       ))}
                     </div>
                   )}
@@ -618,7 +614,7 @@ const latestAudio = latestEpisode?.episode.frontmatter.audio ?? "";
     });
 
     audioPlayer?.addEventListener("loadedmetadata", () => {
-      if (durationEl) {
+      if (durationEl && audioPlayer) {
         durationEl.textContent = formatTime(audioPlayer.duration);
       }
     });
